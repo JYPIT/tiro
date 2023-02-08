@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: bisque;
+}
+
+.section1 {
+  height: 15%;
+}
+.section1 img {
+  width: 100%;
+  height: 100%;
+}
+
+.section2 {
+  height: 50%;
+}
+
+.section3 {
+  height: 35%;
+}

@@ -1,0 +1,19 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.calender {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-gap: 5px;
+  border: 1px solid red;
+  text-align: center;
+  padding: 1rem 0.5rem;
+}
+
+.calender div {
+  padding: 1rem 0.5rem;
+  border: 1px solid black;
+  height: 5rem;
+}
