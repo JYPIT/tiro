@@ -1,0 +1,9 @@
+.nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 95%;
+  height: 3rem;
+  background-color: brown;
+  color: white;
+}

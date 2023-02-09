@@ -9,5 +9,11 @@ Home
 - 오늘의 할 일
 
 /calender
+
 /todo
+
+- Navigation Bar
+- Todo List
+- Todo Form
+
 /timer

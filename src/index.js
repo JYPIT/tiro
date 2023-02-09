@@ -1,40 +1,40 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import ErrorPage from './pages/ErrorPage';
-import './index.css';
-import App from './App';
-import Home from './pages/Home';
-import Calender from './pages/Calender';
-import Todo from './pages/Todo';
-import TimeTools from './pages/TimeTools';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import ErrorPage from "./pages/ErrorPage";
+import "./index.css";
+import App from "./App";
+import Home from "./pages/Home";
+import Calender from "./pages/Calender";
+import Todo from "./pages/Todo";
+import TimeTools from "./pages/TimeTools";
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <App />,
     errorElement: <ErrorPage />,
     children: [
-      { index: true, path: '/', element: <Home /> },
+      { index: true, path: "/", element: <Home /> },
       {
-        path: '/calender',
+        path: "/calender",
         element: <Calender />,
       },
       {
-        path: '/timetools',
+        path: "/timetools",
         element: <TimeTools />,
       },
       {
-        path: '/todo',
+        path: "/todo",
         element: <Todo />,
       },
     ],
   },
 ]);
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
+  <>
     <RouterProvider router={router} />
-  </React.StrictMode>
+  </>
 );

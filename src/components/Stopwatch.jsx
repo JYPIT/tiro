@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
+import styles from "./Stopwatch.module.css";
 
 export default function StopWatch() {
   const [time, setTime] = useState(0);
@@ -10,7 +11,14 @@ export default function StopWatch() {
     const sec = Math.floor(item / 100) % 60;
     const min = Math.floor(item / 6000) % 60;
     const hour = Math.floor(item / 360000);
-    return `${hour}:${min}:${sec}:${msec}`;
+    return (
+      <div>
+        <span>
+          {hour.toString().padStart(2, "0")}:{min.toString().padStart(2, "0")}:{sec.toString().padStart(2, "0")}.
+        </span>
+        <span>{msec.toString().padStart(2, "0")}</span>
+      </div>
+    );
   }
 
   useEffect(() => {
@@ -36,21 +44,21 @@ export default function StopWatch() {
   //   };
 
   return (
-    <div>
+    <div className={styles.wrapper}>
       <h1>Stop Watch</h1>
-      <span>
-        {/* Time: {hour}:{min}:{sec}:{msec} */}
-        {timeConverter(time)}
-      </span>
-      <ul>
+      <div className={styles.time}>{timeConverter(time)}</div>
+      <ul className={styles.lapsBox}>
         {laps.map((lap, index) => (
-          <li key={index}>{timeConverter(lap)}</li>
+          <li className={styles.laps} key={index}>
+            {timeConverter(lap)}
+          </li>
         ))}
       </ul>
-      <br />
-      <button onClick={handleStopWatch}>{isRunning ? 'Stop' : 'Start'}</button>
-      {isRunning ? null : <button onClick={handleReset}>Reset</button>}
-      <button onClick={() => setLaps([...laps, time])}>Laps</button>
+      <div>
+        <button onClick={handleStopWatch}>{isRunning ? "Stop" : "Start"}</button>
+        {isRunning ? null : <button onClick={handleReset}>Reset</button>}
+        <button onClick={() => setLaps([...laps, time])}>Laps</button>
+      </div>
     </div>
   );
 }

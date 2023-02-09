@@ -1,16 +1,18 @@
-import { useRef, useState, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
+import styles from "./Timer.module.css";
 
-export default function Timer() {
+export default function TimeCalculator() {
   const [hour, setHour] = useState(0);
-  const [min, setMin] = useState(0);
-  const [sec, setSec] = useState(3);
+  const [min, setMin] = useState(3);
+  const [sec, setSec] = useState(0);
 
-  // const tempHour = hour ? hour : 3;
-  // const tempMin = min ? min : 0;
-  // const tempSec = sec ? sec : 0;
+  //   const tempHour = hour ? hour : 0;
+  //   const tempMin = min ? min : 10;
+  //   const tempSec = sec ? sec : 0;
 
   const initTime = useRef(hour * 3600 + min * 60 + sec);
   const intervalTime = useRef(null);
+
   const [isRunning, setIsRunning] = useState(false);
 
   const handleStartTimer = () => setIsRunning((prev) => !prev);
@@ -35,16 +37,18 @@ export default function Timer() {
     }
   }, [sec]);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
   return (
-    <div>
-      <h1>{`${hour} : ${min} : ${sec}`}</h1>
-      <form onSubmit={(e) => e.preventDefault()}>
-        <input type="number" value={hour} onChange={(e) => setHour(e.target.value)} />
-        <input type="number" value={min} onChange={(e) => setMin(e.target.value)} />
-        <input type="number" value={sec} onChange={(e) => setSec(e.target.value)} />
+    <div className={styles.wrapper}>
+      <span className={styles.time}>{`${hour.toString().padStart(2, "0")}h:${min.toString().padStart(2, "0")}m:${sec.toString().padStart(2, "0")}s`}</span>
+      <form className={styles.form} onSubmit={handleSubmit}>
+        <input type="number" value={hour.toString().padStart(2, "0")} onChange={(e) => setHour(e.target.value)} />
+        <input type="number" value={min.toString().padStart(2, "0")} onChange={(e) => setMin(e.target.value)} />
+        <input type="number" value={sec.toString().padStart(2, "0")} onChange={(e) => setSec(e.target.value)} />
         <button onClick={handleStartTimer}>{isRunning ? "Stop" : "Start"}</button>
       </form>
-      {/* <button onClick={() => initTime}>Reset</button> */}
     </div>
   );
 }
