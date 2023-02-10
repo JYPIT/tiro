@@ -4,6 +4,7 @@ export default function TodoNav({ todos, types, setType }) {
   const handleClick = (e) => {
     setType(e.target.name);
   };
+
   return (
     <nav className={styles.nav}>
       {types.map((i, index) => (

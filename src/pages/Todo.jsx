@@ -30,16 +30,18 @@ export default function Todo() {
   const filtered = getFiltered();
 
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.container}>
       <TodoNav todos={todos} types={todoTypes} setType={setTodoType} />
-      <article className={styles.todo}>
-        <ul>
+      <section className={styles.todo}>
+        <ul className={styles.todoList}>
           {filtered.map((todo) => (
             <TodoItem key={todo.id} todo={todo} updateTodo={handleUpdate} deleteTodo={handleDelete} />
           ))}
         </ul>
-      </article>
-      <TodoForm addTodo={handleAdd} />
+      </section>
+      <section className={styles.todoForm}>
+        <TodoForm addTodo={handleAdd} />
+      </section>
     </div>
   );
 }

@@ -1,24 +1,22 @@
-.wrapper {
+.container {
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   height: 100%;
-  background: rgb(68, 215, 236);
-  background: radial-gradient(circle, rgba(68, 215, 236, 1) 0%, rgba(87, 115, 255, 1) 100%);
 }
 
 .todo {
   background-color: #f4b416;
   width: 95%;
   height: 50%;
-  box-shadow: 0px 28px 5px 0px rgba(0, 0, 0, 0.75);
-  -webkit-box-shadow: 0px 28px 5px 0px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 0px 28px 5px 0px rgba(0, 0, 0, 0.75);
 }
 
-.textForm {
-  position: absolute;
-  bottom: 7rem;
+.todoList {
+  height: 100%;
+  overflow-y: auto;
+}
+
+.todoForm {
+  width: 95%;
 }

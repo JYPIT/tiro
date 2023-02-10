@@ -1,0 +1,27 @@
+.todoItem {
+  position: relative;
+  display: flex;
+  font-size: large;
+  margin-top: 1rem;
+}
+
+.todoItem input,
+label {
+  margin-left: 1rem;
+}
+.todoItem button {
+  position: absolute;
+  right: 0;
+  margin-right: 1rem;
+  padding: 5px 3px 0px 3px;
+  border: none;
+  font-size: large;
+  background-color: transparent;
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.todoItem button:hover {
+  opacity: 1;
+  transform: rotate(15deg);
+}

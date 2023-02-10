@@ -1,3 +1,5 @@
+import styles from './TodoItem.module.css';
+import {BsTrash }from 'react-icons/bs';
 export default function TodoItem({ todo, updateTodo, deleteTodo }) {
   const handleCheck = (e) => {
     updateTodo({ ...todo, isChecked: e.target.checked });
@@ -7,10 +9,12 @@ export default function TodoItem({ todo, updateTodo, deleteTodo }) {
   };
 
   return (
-    <li>
-      <input id="todo" type="checkbox" checked={todo.isChecked} onChange={handleCheck} />
-      <label htmlFor="todo">{todo.text}</label>
-      <button onClick={handleDelete}>del</button>
+    <li className={styles.todoItem}>
+      <input id={todo.id} type="checkbox" checked={todo.isChecked} onChange={handleCheck} />
+      <label htmlFor={todo.id}>{todo.text}</label>
+      <button onClick={handleDelete}>
+        <BsTrash />
+      </button>
     </li>
   );
 }

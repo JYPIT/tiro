@@ -1,3 +1,4 @@
+import styles from './TodoForm.module.css';
 import { useState } from 'react';
 
 export default function TodoForm({ addTodo }) {
@@ -11,10 +12,9 @@ export default function TodoForm({ addTodo }) {
   };
 
   return (
-    <div>
+    <div className={styles.container}>
       <form onSubmit={handleSubmit}>
-        <input type="text" value={text} onChange={handleChange} />
-        <button>추가</button>
+        <input type="text" value={text} placeholder="입력해주세요..." maxLength="45" onChange={handleChange} />
       </form>
     </div>
   );

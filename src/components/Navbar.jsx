@@ -1,19 +1,29 @@
 import styles from './Navbar.module.css';
 import { Link } from 'react-router-dom';
+import { BsFillCalendarDayFill } from 'react-icons/bs';
+import { FcTodoList } from 'react-icons/fc';
+import { RxLapTimer } from 'react-icons/rx';
 
 export default function Navbar() {
   // const { darkMode, toggleDarkMode } = useContext(DarkModeContext);
   return (
     <nav className={styles.nav}>
-      <div className={styles.navItem}>
-        <Link to='/calender'>달력</Link>
-        <Link to='/todo'>할 일</Link>
+      <div>
+        <Link className={styles.navIcon} to="/calender">
+          <BsFillCalendarDayFill />
+        </Link>
+        <Link className={styles.navIcon} to="/todo">
+          <FcTodoList />
+        </Link>
       </div>
-      <div className={styles.logo}>
-        <Link to='/'>Tiro</Link>
-      </div>
-      <div className={styles.navItem}>
-        <Link to='/timetools'>타이머</Link>
+      <Link className={styles.logo} to="/">
+        Tiro
+      </Link>
+
+      <div>
+        <Link className={styles.navIcon} to="/timetools">
+          <RxLapTimer />
+        </Link>
       </div>
     </nav>
   );
