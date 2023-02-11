@@ -15,31 +15,3 @@
   border: 1px solid tomato;
   background-color: rgb(102, 102, 236);
 }
-
-.calenderGrid {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  grid-template-rows: repeat(6, 1fr);
-  grid-gap: 5px;
-  border: 1px solid green;
-  text-align: center;
-}
-
-.calenderGrid div {
-  padding: 1rem 0.5rem;
-  border: 1px solid black;
-}
-
-.prev {
-  font-size: small;
-  opacity: 0.7;
-}
-
-.now {
-  font-weight: 500;
-}
-
-.next {
-  font-size: small;
-  opacity: 0.7;
-}
