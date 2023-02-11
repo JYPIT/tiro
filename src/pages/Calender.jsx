@@ -3,8 +3,6 @@ import { useState } from 'react';
 import CalenderGrid from '../components/CalenderGrid';
 import CalenderHeader from '../components/CalenderHeader';
 
-const week = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-
 export default function Calender() {
   const [pivotYear, setPivotYear] = useState(2023);
   const [pivotMonth, setPivotMonth] = useState(1); //0-11
@@ -20,11 +18,7 @@ export default function Calender() {
         year={year}
         month={month}
       />
-      <div className={styles.week}>
-        {week.map((w, index) => (
-          <span key={index}>{w}</span>
-        ))}
-      </div>
+
       <CalenderGrid year={year} month={month} pivotDate={pivotDate} />
     </div>
   );

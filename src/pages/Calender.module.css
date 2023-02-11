@@ -4,14 +4,3 @@
   justify-content: center;
   height: 100%;
 }
-
-.week {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  text-align: center;
-  gap: 5px;
-}
-.week span {
-  border: 1px solid tomato;
-  background-color: rgb(102, 102, 236);
-}

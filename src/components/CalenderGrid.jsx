@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import CalenderModal from './CalenderModal';
 
+const week = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 const today = Date.parse(new Date().toDateString());
 
 export default function CalenderGrid({ year, month, pivotDate }) {
@@ -53,6 +54,11 @@ export default function CalenderGrid({ year, month, pivotDate }) {
 
   return (
     <>
+      <div className={styles.week}>
+        {week.map((w, index) => (
+          <span key={index}>{w}</span>
+        ))}
+      </div>
       <div className={styles.calenderGrid}>
         {prevMonth.map((p, index) => (
           <div className={styles.prev} key={index}>
@@ -62,13 +68,15 @@ export default function CalenderGrid({ year, month, pivotDate }) {
         {schedules &&
           thisMonth.map((day) => (
             <div className={styles.now} key={day.id} onClick={() => handleDayClicked(day.date)}>
-              {day.date === today ? <span className={styles.today}>{day.id}</span> : <span>{day.id}</span>}
-              {schedules.map((schedule) => {
-                if (schedule.date === day.date) {
-                  return <li key={schedule.id}>{schedule.context}</li>;
-                }
-                return null;
-              })}
+              {day.date === today ? <span className={styles.today}>{day.id}</span> : <span className={styles.otherDay}>{day.id}</span>}
+              <ul className={styles.schedules}>
+                {schedules.map((schedule) => {
+                  if (schedule.date === day.date) {
+                    return <li key={schedule.id}>{schedule.context}</li>;
+                  }
+                  return null;
+                })}
+              </ul>
             </div>
           ))}
         {nextMonth.map((n, index) => (
@@ -76,15 +84,15 @@ export default function CalenderGrid({ year, month, pivotDate }) {
             {n}
           </div>
         ))}
-        {findedSchedule && (
-          <CalenderModal //
-            findedSchedule={findedSchedule}
-            deleteSchedule={deleteSchedule}
-            updateSchedules={updateSchedules}
-            dayMatch={dayMatch}
-          />
-        )}
       </div>
+      {findedSchedule && (
+        <CalenderModal //
+          findedSchedule={findedSchedule}
+          deleteSchedule={deleteSchedule}
+          updateSchedules={updateSchedules}
+          dayMatch={dayMatch}
+        />
+      )}
     </>
   );
 }

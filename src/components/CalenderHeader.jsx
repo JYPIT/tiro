@@ -1,3 +1,5 @@
+import styles from './CalenderHeader.module.css';
+
 const today = new Date();
 
 export default function CalenderHeader({ setPivotYear, setPivotMonth, year, month }) {
@@ -18,13 +20,20 @@ export default function CalenderHeader({ setPivotYear, setPivotMonth, year, mont
     setPivotMonth(today.getMonth());
   };
   return (
-    <div>
-      <button onClick={clickYearLeft}>⬅️</button>
-      {year}
-      <button onClick={clickYearRight}>➡️</button>
-      <button onClick={clickMonthLeft}>⬅️</button>
-      {(month % 12) + 1}월<button onClick={clickMonthRight}>➡️</button>
-      <button onClick={clickToday}>Today</button>
+    <div className={styles.container}>
+      <section className={styles.year}>
+        <button onClick={clickYearLeft}>⬅️</button>
+        {year}
+        <button onClick={clickYearRight}>➡️</button>
+      </section>
+      <section className={styles.month}>
+        <button onClick={clickMonthLeft}>⬅️</button>
+        {(month % 12) + 1}월<button onClick={clickMonthRight}>➡️</button>
+      </section>
+      <button className={styles.today} onClick={clickToday}>
+        <span>Happy Today 😊</span>
+        <span>Today</span>
+      </button>
     </div>
   );
 }
