@@ -148,7 +148,9 @@ body {
 #root {
   width: 100%;
   height: 100vh;
+  min-width: 50rem;
   max-width: 50rem;
+  max-height: 100rem;
   background-color: #e0e5ec;
   overflow: hidden;
 }

@@ -10,7 +10,7 @@
 
 .year {
   margin-bottom: 1rem;
-  font-size: x-large;
+  font-size: xxx-large;
   font-weight: 600;
 }
 .year button {
@@ -22,6 +22,7 @@
 
 .month {
   margin-bottom: 1rem;
+  font-size: xx-large;
   font-weight: 500;
 }
 .month button {

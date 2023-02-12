@@ -1,20 +1,20 @@
 import styles from './CalenderGrid.module.css';
 import { useNavigate, useMatch } from 'react-router-dom';
-import { useEffect } from 'react';
-import { useState } from 'react';
 import CalenderModal from './CalenderModal';
+import { useState } from 'react';
+import { useEffect } from 'react';
 
 const week = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 const today = Date.parse(new Date().toDateString());
 
 export default function CalenderGrid({ year, month, pivotDate }) {
   const navigate = useNavigate();
-  const [schedules, setSchedules] = useState();
+  const dayMatch = useMatch('/calender/:dayId');
+
+  const [schedules, setSchedules] = useState(getSchedulesFromStorage());
   useEffect(() => {
-    fetch('data/schedules.json')
-      .then((res) => res.json())
-      .then((data) => setSchedules(data.schedules));
-  }, []);
+    localStorage.setItem('schedules', JSON.stringify(schedules));
+  }, [schedules]);
 
   const prevMonth = [];
   const thisMonth = [];
@@ -36,8 +36,6 @@ export default function CalenderGrid({ year, month, pivotDate }) {
     nextMonth.push(i);
   }
 
-  const dayMatch = useMatch('/calender/:dayId');
-
   const findedSchedule = dayMatch && schedules.filter((schedule) => schedule.date + '' === dayMatch.params.dayId);
 
   const updateSchedules = (date, text) => {
@@ -53,12 +51,13 @@ export default function CalenderGrid({ year, month, pivotDate }) {
   };
 
   return (
-    <>
+    <div className={styles.container}>
       <div className={styles.week}>
         {week.map((w, index) => (
           <span key={index}>{w}</span>
         ))}
       </div>
+      {/* TODO: 전월/다음월 스케쥴 표시 */}
       <div className={styles.calenderGrid}>
         {prevMonth.map((p, index) => (
           <div className={styles.prev} key={index}>
@@ -72,7 +71,11 @@ export default function CalenderGrid({ year, month, pivotDate }) {
               <ul className={styles.schedules}>
                 {schedules.map((schedule) => {
                   if (schedule.date === day.date) {
-                    return <li key={schedule.id}>{schedule.context}</li>;
+                    return (
+                      <li className={styles.scheduleItem} key={schedule.id}>
+                        <span>{schedule.context}</span>
+                      </li>
+                    );
                   }
                   return null;
                 })}
@@ -93,6 +96,11 @@ export default function CalenderGrid({ year, month, pivotDate }) {
           dayMatch={dayMatch}
         />
       )}
-    </>
+    </div>
   );
+}
+
+function getSchedulesFromStorage() {
+  const schedules = JSON.parse(localStorage.getItem('schedules'));
+  return schedules ? schedules : [{ id: 123, date: today, context: '테스트 이벤트' }];
 }

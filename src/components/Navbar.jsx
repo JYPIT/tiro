@@ -16,8 +16,8 @@ export default function Navbar() {
           <FcTodoList />
         </Link>
       </div>
-      <Link className={styles.logo} to="/">
-        Tiro
+      <Link to="/">
+        <span className={styles.logo}>TIRO</span>
       </Link>
 
       <div>

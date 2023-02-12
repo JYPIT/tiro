@@ -3,12 +3,19 @@ import { useState } from 'react';
 import TodoForm from '../components/TodoForm';
 import TodoNav from '../components/TodoNav';
 import TodoItem from '../components/TodoItem';
+import { useEffect } from 'react';
 
 const todoTypes = ['All', 'Doing', 'Done'];
 
 export default function Todo() {
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState(getTodosFromStorage());
   const [todotype, setTodoType] = useState(todoTypes[0]);
+
+  console.log(localStorage.getItem('todos'));
+
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos));
+  }, [todos]);
 
   const handleAdd = (add) => {
     setTodos([...todos, add]);
@@ -44,4 +51,9 @@ export default function Todo() {
       </section>
     </div>
   );
+}
+
+function getTodosFromStorage() {
+  const todos = JSON.parse(localStorage.getItem('todos'));
+  return todos ? todos : [{ id: 1676195075946, text: 'test', isChecked: false }];
 }

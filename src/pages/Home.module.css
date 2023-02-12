@@ -3,23 +3,61 @@
   flex-direction: column;
   height: 100%;
 }
-.container * {
-}
 
 .section1 {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 13%;
+  height: 15%;
+  background-color: yellow;
+  margin-bottom: 1rem;
 }
 .section1 span {
   position: absolute;
   font-size: x-large;
   color: whitesmoke;
   padding: 0.5rem;
-  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
+  background: rgba(0, 0, 0, 0.5);
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%);
+  color: #fff;
+  overflow: hidden;
 }
+.section1 span:before {
+  position: absolute;
+  content: '';
+  display: inline-block;
+  top: -180px;
+  left: 0;
+  width: 30px;
+  height: 100%;
+  background-color: #fff;
+  animation: shiny-btn 10s ease-in-out infinite;
+}
+.section1 span:active {
+  box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, 0.3), -4px -4px 6px 0 rgba(116, 125, 136, 0.2), inset -4px -4px 6px 0 rgba(255, 255, 255, 0.2),
+    inset 4px 4px 6px 0 rgba(0, 0, 0, 0.2);
+}
+@keyframes shiny-btn {
+  0% {
+    transform: scale(0) rotate(45deg);
+    opacity: 0;
+  }
+  80% {
+    transform: scale(0) rotate(45deg);
+    opacity: 0.5;
+  }
+  81% {
+    transform: scale(4) rotate(45deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(50) rotate(45deg);
+    opacity: 0;
+  }
+}
+
 .section1 div {
   width: 100%;
   height: 100%;
@@ -29,9 +67,9 @@
 }
 
 .section2 {
-  height: 56%;
+  height: 48%;
 }
 
 .section3 {
-  height: 25%;
+  height: 30%;
 }
